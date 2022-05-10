@@ -1,0 +1,26 @@
+{
+  "name": "employee-tracker",
+  "version": "1.0.0",
+  "description": "an app that allows better organization of employees",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tiffany7809/Employee-Tracker.git"
+  },
+  "author": "Tiffany Dempsey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tiffany7809/Employee-Tracker/issues"
+  },
+  "homepage": "https://github.com/Tiffany7809/Employee-Tracker#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "inquirer": "^8.2.4",
+    "mysql2": "^2.3.3",
+    "node": "^17.7.2"
+  }
+}
