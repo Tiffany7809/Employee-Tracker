@@ -23,8 +23,12 @@ const db = mysql.createConnection(
   console.log(`Connected to the employeeInfo_db database.`)
 );
 
+db.connect(function() {
+    startMenu();
+  });
+
 //================== Initial Prompt =======================//
-function startPrompt() {
+function startMenu() {
     inquirer.prompt([
     {
     type: "list",
@@ -34,18 +38,14 @@ function startPrompt() {
               "View All Employees", 
               "View All Roles",
               "View all Deparments", 
-              "View all employees by Department",
               "Update Employee Role",
               "Add Employee",
               "Add Role",
               "Add Department",
-              "Remove employee",
-              "Remove department",
-              "Remove role",
               "Exit"
             ]
     }
-]).then(function(val) {
+]).then(function(answers) {
     if (answers.choice === "View All Employees") {
         console.log(answers.choice)
         viewEmployees();
@@ -54,10 +54,6 @@ function startPrompt() {
     if(answers.choice === "View All Roles") {
         console.log(answers.choice)
         viewEmployeesByRole();
-    }
-    if(answers.choice === "View all employees by Department") {
-        console.log(answers.choice)
-        viewEmployeesByDepartment();
     }
     if(answers.choice ===  "View all Deparments"){
         console.log(answers.choice)
@@ -79,30 +75,16 @@ function startPrompt() {
         console.log(answers.choice)
         addDepartment();
     }
-    if (answers.choice ===  "Remove employee") {
-        console.log(answers.choice)
-        removeEmployee();
-    }
-    if (answers.choice ===  "Remove department") {
-        console.log(answers.choice)
-        removeDepartment();
-    }
-    if (answers.choice ===  "Remove role") {
-        console.log(answers.choice)
-        removeRole();
-    } 
     if (answers.choice === "Exit")
         connection.end();
 
     })
-}
+};
 
 
 function viewEmployees() {}
 
 function viewEmployeesByRole() {}
-
-function viewEmployeesByDepartment(){}
 
 function viewAllDepartment(){}
 
@@ -114,11 +96,6 @@ function addRole(){}
 
 function addDepartment(){}
 
-function removeEmployee(){}
-
-function removeDepartment(){}
-
-function removeRole(){}
 
 
 
