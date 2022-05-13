@@ -96,7 +96,7 @@ function startMenu() {
 
 //function to view all employees
 function viewEmployees() { 
-    var query = 'SELECT employee.first_name, employee.last_name, employee.manager_id, role.title, role.salary, role.department_id FROM employee INNER JOIN role ON employee.role_id = role.id;'
+    var query = 'SELECT employee.first_name, employee.last_name, employee.manager_id AS ManagerID, role.title AS Title,  department.name AS Department, role.salary AS Salary FROM employee INNER JOIN role ON employee.role_id = role.id INNER JOIN department ON role.department_id = department.id;'
     
     //add table titles
     db.query(query, function(err, res) {
