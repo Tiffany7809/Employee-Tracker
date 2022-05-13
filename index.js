@@ -96,7 +96,7 @@ function startMenu() {
 
 //function to view all employees
 function viewEmployees() { 
-    var query = 'SELECT employee.first_name, employee.last_name, employee.manager_id AS ManagerID, role.title AS Title,  department.name AS Department, role.salary AS Salary FROM employee INNER JOIN role ON employee.role_id = role.id INNER JOIN department ON role.department_id = department.id;'
+    var query = 'SELECT employee.id AS ID, employee.first_name, employee.last_name, employee.manager_id AS ManagerID, role.title AS Title,  department.name AS Department, role.salary AS Salary FROM employee INNER JOIN role ON employee.role_id = role.id INNER JOIN department ON role.department_id = department.id;'
     
     //add table titles
     db.query(query, function(err, res) {
@@ -109,6 +109,7 @@ function viewEmployees() {
 //function to vire all roles
 function viewRoles() {
     var query = 'SELECT * FROM role';
+    var query = 'SELECT role.id AS ID, role.title AS Title, department.name AS Department, role.salary AS Salary FROM role INNER JOIN department ON role.department_id = department.id'
     db.query(query, function(err, res){
         if (err) throw err;
         console.table('All Roles:', res);
@@ -188,9 +189,6 @@ function updateEmployeeRole(){
   });
     
 }
-/////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////
 
 //function to add a new employee
 function addEmployee(){
@@ -326,9 +324,7 @@ function addDepartment(){
                 })
             })
 }
-///////////////////////////////////////////////
-/////////////////////////////////////////////////
-//////////////////////////////////////////////
+
 
 //function to remove an employee from table 
 function  removeEmployee() {}
