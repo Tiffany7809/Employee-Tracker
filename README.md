@@ -40,6 +40,9 @@
   <h2 id="use">Usage</h2>
 
   Follow along with the prompts given in the command line after you have run node index.js. once you are done select exit and hit  ctrl+c to get out of the application.
+  
+ This video shows how to navigate through the application :
+ https://drive.google.com/file/d/1HznKGTk0cewBsNAiIAM812FjDh4GRb4R/view
   ***
       
   <h2 id="contribute">Contributing</h2>
