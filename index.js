@@ -49,37 +49,38 @@ function startMenu() {
     }
 ]).then(function(answers) {
     if (answers.choice === "View All Employees") {
-        console.log(answers.choice)
+        console.log("Viewing all Employees..")
         viewEmployees();
 
     } 
     if(answers.choice === "View All Roles") {
-        console.log(answers.choice)
+        console.log("Viewing all Roles..")
         viewRoles();
     }
     if(answers.choice ===  "View all Deparments"){
-        console.log(answers.choice)
+        console.log("Viewing all Departments..")
         viewAllDepartment();
     }
     if (answers.choice === "Update Employee Role") {
-        console.log(answers.choice)
+        console.log("Updating Employees Role..")
         updateEmployeeRole();
     }
     if(answers.choice === "Add Employee") {
-        console.log(answers.choice)
+        console.log("Adding a New Employee..")
         addEmployee();
     }
     if(answers.choice === "Add Role") {
-        console.log(answers.choice)
+        console.log("Adding a New Role..")
         addRole();
     }
     if (answers.choice === "Add Department") {
-        console.log(answers.choice)
+        console.log("Adding a New Department..")
         addDepartment();
     }
-    if (answers.choice === "Exit")
+    if (answers.choice === "Exit") {
+        console.log("Exiting the Application...")
         exitApp(); // fix end function 
-
+    }
     })
 };
 
@@ -90,7 +91,7 @@ function viewEmployees() {
     
     db.query(query, function(err, res) {
         if (err) throw err;
-        console.table('All Employees:', res); 
+        console.table(res); 
         startMenu();
     })
 }
@@ -101,7 +102,7 @@ function viewRoles() {
     var query = 'SELECT role.id AS ID, role.title AS Title, department.name AS Department, role.salary AS Salary FROM role INNER JOIN department ON role.department_id = department.id'
     db.query(query, function(err, res){
         if (err) throw err;
-        console.table('All Roles:', res);
+        console.table(res);
         startMenu();
     })
 }
@@ -112,7 +113,7 @@ function viewAllDepartment(){
     var query = 'SELECT department.id AS ID, department.name AS Department FROM department';
     db.query(query, function(err, res) {
         if(err)throw err;
-        console.table('All Departments:', res);
+        console.table(res);
         startMenu();
     })
 }
@@ -263,10 +264,10 @@ function addRole(){
                 },
             }
         ]).then(function (answer) {
-            let department_id;
+            let departmentId;
             for (let a = 0; a < res.length; a++) {
                 if (res[a].name == answer.Department) {
-                    department_id = res[a].id;
+                    departmentId = res[a].id;
                 }
             }
     
@@ -275,7 +276,7 @@ function addRole(){
                 {
                     title: answer.newRole,
                     salary: answer.salary,
-                    department_id: department_id
+                    department_id: departmentId
                 },
                 function (err, res) {
                     if(err)throw err;
