@@ -35,7 +35,7 @@ function startMenu() {
     inquirer.prompt([
     {
     type: "list",
-    message: "What would you like to do?",
+    message: "What do you want to do?",
     name: "choice",
     choices: [
               "View All Employees", 
@@ -45,8 +45,6 @@ function startMenu() {
               "Add Employee",
               "Add Role",
               "Add Department",
-              "Remove an Employee",
-              "Delete a Role",
               "Exit"
             ]
     }
