@@ -108,7 +108,7 @@ function viewEmployees() {
 
 //function to vire all roles
 function viewRoles() {
-    var query = 'SELECT * FROM role';
+    // var query = 'SELECT * FROM role';
     var query = 'SELECT role.id AS ID, role.title AS Title, department.name AS Department, role.salary AS Salary FROM role INNER JOIN department ON role.department_id = department.id'
     db.query(query, function(err, res){
         if (err) throw err;
@@ -119,19 +119,18 @@ function viewRoles() {
 
 // Function to view all departments
 function viewAllDepartment(){
-    var query = 'SELECT * FROM department';
+    // var query = 'SELECT * FROM department';
+    var query = 'SELECT department.id AS ID, department.name AS Department FROM department';
     db.query(query, function(err, res) {
         if(err)throw err;
         console.table('All Departments:', res);
         startMenu();
     })
 }
-/////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////
 
+// function to update the employee role
 function updateEmployeeRole(){
-    //get all the employee list 
+ // show list of all employees to pick from 
   db.query("SELECT * FROM EMPLOYEE", (err, emplRes) => {
     if (err) throw err;
     const updateEmployee = [];
@@ -142,7 +141,7 @@ function updateEmployeeRole(){
       });
     });
     
-    //get all the role list to make choice of employee's role
+    //get the roles list for selection of new role
     db.query("SELECT * FROM ROLE", (err, rolRes) => {
       if (err) throw err;
       const roleUpdate = [];
@@ -158,7 +157,7 @@ function updateEmployeeRole(){
           type: "list",
           name: "id",
           choices: updateEmployee,
-          message: "Ehat employee do you want to update?"
+          message: "What employee do you want to update?"
         },
         {
           type: "list",
@@ -209,17 +208,17 @@ function addEmployee(){
                 {
                     name: 'manager_id',
                     type: 'input', 
-                    message: "What is the employee's manager's ID? "
+                    message: "What is the managers ID for this employee? "
                 },
                 {
                     name: 'role', 
                     type: 'list',
                     choices: function() {
-                    var roleArray = [];
+                    var roleArr = [];
                     for (let i = 0; i < res.length; i++) {
-                        roleArray.push(res[i].title);
+                        roleArr.push(res[i].title);
                     }
-                    return roleArray;
+                    return roleArr;
                     },
                     message: "What is this employee's role? "
                 }
