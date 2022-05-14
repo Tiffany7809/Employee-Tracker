@@ -42,7 +42,7 @@
   Follow along with the prompts given in the command line after you have run node index.js. once you are done select exit and hit  ctrl+c to get out of the application.
   
  This video shows how to navigate through the application :
-https://youtu.be/QqXYFJ_RUSE
+https://youtu.be/EJOGnng143w
   ***
       
   <h2 id="contribute">Contributing</h2>
