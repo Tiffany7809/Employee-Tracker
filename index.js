@@ -121,10 +121,10 @@ function viewAllDepartment(){
 // function to update the employee role
 function updateEmployeeRole(){
  // show list of all employees to pick from 
-  db.query("SELECT * FROM EMPLOYEE", (err, emplRes) => {
+  db.query("SELECT * FROM EMPLOYEE", (err, res) => {
     if (err) throw err;
     const updateEmployee = [];
-    emplRes.forEach(({ first_name, last_name, id }) => {
+    res.forEach(({ first_name, last_name, id }) => {
       updateEmployee.push({
         name: first_name + " " + last_name,
         value: id
@@ -132,10 +132,10 @@ function updateEmployeeRole(){
     });
     
     //get the roles list for selection of new role
-    db.query("SELECT * FROM ROLE", (err, rolRes) => {
+    db.query("SELECT * FROM ROLE", (err, res) => {
       if (err) throw err;
       const roleUpdate = [];
-      rolRes.forEach(({ title, id }) => {
+      res.forEach(({ title, id }) => {
         roleUpdate.push({
           name: title,
           value: id
@@ -281,7 +281,6 @@ function addRole(){
                 function (err, res) {
                     if(err)throw err;
                     console.log('Your new role has been added!');
-                    console.table('All Roles:', res);
                     startMenu();
                 })
         })
